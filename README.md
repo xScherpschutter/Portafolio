@@ -35,4 +35,4 @@ Todos los comandos se ejecutan desde la raíz del proyecto, en una terminal:
 │   └── pages/
 │       └── index.astro
 └── package.json
-```
+``` 
