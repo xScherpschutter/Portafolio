@@ -1,0 +1,54 @@
+---
+---
+
+<section id="hero" class="min-h-screen flex items-center justify-center relative px-4 scan-lines">
+  <div class="text-center max-w-4xl mx-auto">
+    <h1 class="text-6xl md:text-8xl font-black mb-6 animate-glow">
+      <span class="text-pixel-blue">WILLIAN</span>
+      <span class="text-pixel-purple">MACIAS</span>
+    </h1>
+    
+    <div class="pixel-box p-8 mb-8 fade-in">
+      <h2 class="text-2xl md:text-4xl mb-4 text-pixel-green glow-text">
+        > DESARROLLADOR FULL-STACK
+      </h2>
+      <p class="text-lg md:text-xl text-pixel-white mb-6">
+        Creando aplicaciones desde el ambito web hasta el mobile.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#projects" class="pixel-button">
+          VER PROYECTOS
+        </a>
+        <a href="#contact" class="pixel-button">
+          CONTACTAR
+        </a>
+      </div>
+    </div>
+    
+    <div class="text-pixel-yellow text-xl animate-bounce">
+      ▼ SCROLL DOWN ▼
+    </div>
+  </div>
+  
+  <!-- Fondo animado pixelado -->
+  <div class="absolute inset-0 -z-10">
+    <div class="matrix-rain"></div>
+  </div>
+</section>
+
+<style>
+  .matrix-rain {
+    background: 
+      linear-gradient(90deg, transparent 98%, rgba(0, 255, 255, 0.1) 100%),
+      linear-gradient(0deg, transparent 98%, rgba(255, 0, 255, 0.1) 100%);
+    background-size: 50px 50px;
+    animation: matrix-move 10s linear infinite;
+    width: 100%;
+    height: 100%;
+  }
+  
+  @keyframes matrix-move {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+</style>

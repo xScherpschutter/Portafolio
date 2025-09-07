@@ -1,0 +1,111 @@
+---
+import ImageCarousel from './ImageCarousel.astro';
+import { projects, colorMap } from '../data/projects.js';
+---
+
+<section id="projects" class="min-h-screen py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-4xl md:text-6xl font-black text-center mb-16 glow-text fade-in">
+      <span class="text-pixel-green">{</span>
+      <span class="text-pixel-yellow">PROYECTOS</span>
+      <span class="text-pixel-green">}</span>
+    </h2>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <div class="project-card pixel-box p-6 fade-in" data-delay={index * 200}>
+          <div class="project-image mb-4">
+            <ImageCarousel 
+              images={project.images}
+              projectName={project.name}
+              projectId={project.id}
+            />
+          </div>
+          <h3 class={`text-xl font-bold text-${colorMap[project.color]} mb-2`}>
+            {project.title}
+          </h3>
+          <p class="text-pixel-white mb-4">
+            {project.description}
+          </p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            {project.technologies.map((tech) => (
+              <span class="tech-tag">{tech}</span>
+            ))}
+          </div>
+          <div class="flex gap-3">
+            {project.demoUrl && (
+              <button
+                class="pixel-button text-sm"
+                onclick={`window.open('${project.demoUrl}', '_blank')`}
+              >
+                VER DEMO
+              </button>
+            )}
+
+            {project.codeUrl && (
+              <button
+                class="pixel-button text-sm"
+                onclick={`window.open('${project.codeUrl}', '_blank')`}
+              >
+                CÓDIGO
+              </button>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .project-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #00ffff, #ff00ff, #00ff00, #ffff00);
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .project-card:hover::before {
+    opacity: 1;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+      0 20px 40px rgba(0, 255, 255, 0.3),
+      0 0 50px rgba(255, 0, 255, 0.2);
+  }
+  
+  .project-image {
+    transition: all 0.3s ease;
+    image-rendering: auto;
+    height: 320px;
+    margin-bottom: 1rem;
+  }
+  
+  .project-card:hover .project-image {
+    transform: none;
+  }
+  
+  .tech-tag {
+    background: rgba(0, 255, 255, 0.2);
+    color: #00ffff;
+    padding: 4px 8px;
+    border: 1px solid #00ffff;
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+</style>

@@ -1,0 +1,315 @@
+---
+export interface Props {
+  images: string[];
+  projectName: string;
+  projectId: number;
+}
+
+const { images, projectName, projectId } = Astro.props;
+---
+
+<div class="image-carousel" data-project={projectId}>
+  <div class="carousel-container">
+    <div class="carousel-track" data-track={projectId}>
+      {images.map((image, index) => (
+        <div 
+          class={`carousel-slide ${index === 0 ? 'active' : ''}`} 
+          data-slide={index}
+        >
+          <img 
+            src={image} 
+            alt={`${projectName} - Screenshot ${index + 1}`}
+            class="project-screenshot"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+    
+    {images.length > 1 && (
+      <>
+        <!-- Navegación -->
+        <button 
+          class="carousel-nav carousel-nav-prev" 
+          data-carousel={projectId} 
+          data-direction="prev"
+          aria-label="Imagen anterior"
+        >
+          ◀
+        </button>
+        <button 
+          class="carousel-nav carousel-nav-next" 
+          data-carousel={projectId} 
+          data-direction="next"
+          aria-label="Siguiente imagen"
+        >
+          ▶
+        </button>
+        
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          {images.map((_, index) => (
+            <button 
+              class={`carousel-indicator ${index === 0 ? 'active' : ''}`}
+              data-carousel={projectId}
+              data-goto={index}
+              aria-label={`Ir a imagen ${index + 1}`}
+            />
+          ))}
+        </div>
+      </>
+    )}
+  </div>
+</div>
+
+<style>
+.image-carousel {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    border: 2px solid #00ffff;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  
+  .carousel-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .carousel-slide.active {
+    opacity: 1;
+  }
+  
+.project-screenshot {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    image-rendering: auto;
+    -ms-interpolation-mode: bicubic; /* mejora en IE antiguos, no afecta modernos */
+  }
+  
+  .carousel-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 255, 255, 0.9);
+    color: #000000;
+    border: 2px solid #ffffff;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    font-family: monospace;
+  }
+  
+  .carousel-nav:hover {
+    background: #ffffff;
+    color: #000000;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  }
+  
+  .carousel-nav-prev {
+    left: 8px;
+  }
+  
+  .carousel-nav-next {
+    right: 8px;
+  }
+  
+  .carousel-indicators {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 10;
+  }
+  
+  .carousel-indicator {
+    width: 8px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #00ffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .carousel-indicator.active {
+    background: #00ffff;
+    box-shadow: 0 0 6px rgba(0, 255, 255, 0.8);
+  }
+  
+  .carousel-indicator:hover {
+    background: #ffffff;
+    transform: scale(1.2);
+  }
+
+  /* Efectos de glitch ocasionales */
+  @keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-1px, 1px); }
+    40% { transform: translate(-1px, -1px); }
+    60% { transform: translate(1px, 1px); }
+    80% { transform: translate(1px, -1px); }
+  }
+  
+  .image-carousel:hover {
+    animation: glitch 0.3s ease-in-out;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .carousel-nav {
+      width: 32px;
+      height: 32px;
+      font-size: 12px;
+    }
+    
+    .carousel-nav-prev {
+      left: 4px;
+    }
+    
+    .carousel-nav-next {
+      right: 4px;
+    }
+    
+    .carousel-indicators {
+      bottom: 4px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar todos los carruseles
+    const carousels = document.querySelectorAll('.image-carousel');
+    
+    carousels.forEach(carousel => {
+      const projectId = carousel.dataset.project;
+      const slides = carousel.querySelectorAll('.carousel-slide');
+      const indicators = carousel.querySelectorAll('.carousel-indicator');
+      const navButtons = carousel.querySelectorAll('.carousel-nav');
+      
+      if (slides.length <= 1) return;
+      
+      let currentSlide = 0;
+      let isTransitioning = false;
+      
+      function showSlide(index) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+        
+        // Ocultar slide actual
+        slides[currentSlide].classList.remove('active');
+        indicators[currentSlide]?.classList.remove('active');
+        
+        // Mostrar nuevo slide
+        currentSlide = index;
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide]?.classList.add('active');
+        
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }
+      
+      function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+      }
+      
+      function prevSlide() {
+        const prev = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide(prev);
+      }
+      
+      // Event listeners para navegación
+      navButtons.forEach(button => {
+        if (button.dataset.carousel === projectId) {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (button.dataset.direction === 'next') {
+              nextSlide();
+            } else if (button.dataset.direction === 'prev') {
+              prevSlide();
+            }
+          });
+        }
+      });
+      
+      // Event listeners para indicadores
+      indicators.forEach((indicator, index) => {
+        if (indicator.dataset.carousel === projectId) {
+          indicator.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            showSlide(index);
+          });
+        }
+      });
+      
+      // Auto-play opcional (deshabilitado por defecto)
+      let autoplayInterval;
+      
+      function startAutoplay() {
+        autoplayInterval = setInterval(() => {
+          nextSlide();
+        }, 4000);
+      }
+      
+      function stopAutoplay() {
+        clearInterval(autoplayInterval);
+      }
+      
+      // Pausar autoplay al hover
+      carousel.addEventListener('mouseenter', stopAutoplay);
+      carousel.addEventListener('mouseleave', () => {
+        // Opcional: reiniciar autoplay
+        // startAutoplay();
+      });
+      
+      // Navegación con teclado
+      carousel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+        }
+      });
+      
+      // Hacer el carrusel focusable para navegación por teclado
+      carousel.setAttribute('tabindex', '0');
+    });
+  });
+</script>
