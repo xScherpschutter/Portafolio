@@ -35,9 +35,9 @@ const { title } = Astro.props;
   <body class="scan-lines">
     <!-- Barra de navegación -->
     <nav class="fixed top-0 left-0 right-0 z-50 pixel-box bg-pixel-black bg-opacity-90 backdrop-blur-sm">
-      <div class="max-w-6xl mx-auto px-4 py-4">
+      <div class="max-w-6xl mx-auto px-2 sm:px-4 py-3 sm:py-4">
         <div class="flex justify-between items-center">
-          <div class="text-xl font-black text-pixel-blue glow-text">
+          <div class="text-lg sm:text-xl font-black text-pixel-blue glow-text">
             &#60;xScherpschutter&#47;&#62;
           </div>
           
@@ -49,19 +49,19 @@ const { title } = Astro.props;
           </div>
           
           <!-- Botón mobile -->
-          <button id="mobile-menu-btn" class="md:hidden text-pixel-white text-2xl">
+          <button id="mobile-menu-btn" class="md:hidden text-pixel-white text-xl sm:text-2xl glow-text">
             ☰
           </button>
         </div>
       </div>
       
       <!-- Menú mobile -->
-      <div id="mobile-menu" class="md:hidden hidden bg-pixel-black bg-opacity-95 p-4">
-        <div class="flex flex-col space-y-4">
-          <a href="#hero" class="nav-link text-pixel-white hover:text-pixel-blue transition-colors">INICIO</a>
-          <a href="#about" class="nav-link text-pixel-white hover:text-pixel-green transition-colors">SOBRE_MÍ</a>
-          <a href="#projects" class="nav-link text-pixel-white hover:text-pixel-yellow transition-colors">PROYECTOS</a>
-          <a href="#contact" class="nav-link text-pixel-white hover:text-pixel-purple transition-colors">CONTACTO</a>
+      <div id="mobile-menu" class="md:hidden hidden bg-pixel-black bg-opacity-95 px-4 py-4">
+        <div class="flex flex-col space-y-4 text-center">
+          <a href="#hero" class="nav-link text-pixel-white hover:text-pixel-blue transition-colors py-2 border-b border-pixel-blue border-opacity-20">INICIO</a>
+          <a href="#about" class="nav-link text-pixel-white hover:text-pixel-green transition-colors py-2 border-b border-pixel-green border-opacity-20">SOBRE_MÍ</a>
+          <a href="#projects" class="nav-link text-pixel-white hover:text-pixel-yellow transition-colors py-2 border-b border-pixel-yellow border-opacity-20">PROYECTOS</a>
+          <a href="#contact" class="nav-link text-pixel-white hover:text-pixel-purple transition-colors py-2">CONTACTO</a>
         </div>
       </div>
     </nav>

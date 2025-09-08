@@ -156,12 +156,90 @@ body {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   .pixel-button {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .pixel-box {
+    margin: 0 auto;
+    padding: 1rem !important;
   }
   
   :root {
     --pixel-size: 3px;
     --border-size: 1px;
+  }
+  
+  /* Mejores márgenes y padding para móviles */
+  body {
+    padding: 0 1rem;
+  }
+  
+  /* Títulos más pequeños en móviles */
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.1;
+    margin-bottom: 1.5rem !important;
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  h3 {
+    font-size: 1.4rem !important;
+  }
+  
+  /* Mejor espaciado para secciones */
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Mejor responsive para grids */
+  .grid {
+    gap: 1rem !important;
+  }
+  
+  /* Texto más pequeño en móviles */
+  p, .text-lg {
+    font-size: 0.95rem !important;
+    line-height: 1.5;
+  }
+  
+  .text-xl {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .pixel-button {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+  }
+  
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.5rem !important;
+  }
+  
+  .pixel-box {
+    padding: 0.75rem !important;
+  }
+  
+  body {
+    padding: 0 0.5rem;
+  }
+  
+  section {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
   }
 }
