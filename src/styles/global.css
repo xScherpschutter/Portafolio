@@ -6,9 +6,10 @@
   image-rendering: crisp-edges;
 }
 
+/* Mobile First - Base styles for mobile devices */
 :root {
-  --pixel-size: 4px;
-  --border-size: 2px;
+  --pixel-size: 3px;
+  --border-size: 1px;
 }
 
 body {
@@ -39,7 +40,8 @@ body {
   background: linear-gradient(135deg, #00ffff 0%, #ff00ff 100%);
   color: #0a0a0a;
   border: 2px solid #ffffff;
-  padding: 12px 24px;
+  padding: 8px 16px;
+  font-size: 0.9rem;
   font-family: 'Orbitron', monospace;
   font-weight: 700;
   text-transform: uppercase;
@@ -153,15 +155,15 @@ body {
   transform: translateX(0);
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-  .pixel-button {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+/* Tablet and Desktop Enhancement - Progressive Enhancement */
+@media (min-width: 768px) {
+  :root {
+    --pixel-size: 4px;
+    --border-size: 2px;
   }
   
-  :root {
-    --pixel-size: 3px;
-    --border-size: 1px;
+  .pixel-button {
+    padding: 12px 24px;
+    font-size: 1rem;
   }
 }
