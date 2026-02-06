@@ -117,7 +117,7 @@ export const projects = [
     ],
     technologies: ["TypeScript", "Python", "FastAPI", "Langgraph", "MongoDB", "TailwindCSS", "Chart.JS"],
     demoUrl: "",
-    codeUrl: "",
+    codeUrl: "https://github.com/xScherpschutter/RiskEval",
     color: "purple"
   },
   {
