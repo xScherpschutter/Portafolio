@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+import AboutSection from "../components/AboutSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import "../styles/global.css";
+
+interface Props {
+    lang: string;
+}
+
+const { lang } = Astro.props;
+---
+
+<Layout title="xScherpschutter - Portafolio" lang={lang}>
+    <HeroSection lang={lang} />
+    <AboutSection lang={lang} />
+    <ProjectsSection lang={lang} />
+    <ContactSection lang={lang} />
+</Layout>

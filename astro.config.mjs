@@ -7,4 +7,11 @@ export default defineConfig({
   site: "https://xscherpschutter.github.io/Portafolio",
   base: "/Portafolio/",
   integrations: [tailwind()],
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "es"],
+    routing: {
+      prefixDefaultLocale: false
+    }
+  }
 });

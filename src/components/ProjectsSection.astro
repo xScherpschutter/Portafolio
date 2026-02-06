@@ -1,58 +1,77 @@
 ---
-import ImageCarousel from './ImageCarousel.astro';
-import { projects, colorMap } from '../data/projects.js';
+import ImageCarousel from "./ImageCarousel.astro";
+import { projects, colorMap } from "../data/projects.js";
+import { useTranslations } from "../i18n/utils";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
 ---
 
 <section id="projects" class="min-h-screen py-20 px-4">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl md:text-6xl font-black text-center mb-16 glow-text fade-in">
-      <span class="text-pixel-green">{</span>
-      <span class="text-pixel-yellow">PROYECTOS</span>
-      <span class="text-pixel-green">}</span>
+    <h2
+      class="text-4xl md:text-6xl font-black text-center mb-16 glow-text fade-in"
+    >
+      <span class="text-pixel-green"
+        >{}
+        <span class="text-pixel-yellow">{t("projects.title")}</span>
+        <span class="text-pixel-green"></span></span
+      >
     </h2>
-    
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {projects.map((project, index) => (
-        <div class="project-card pixel-box p-6 fade-in" data-delay={index * 200}>
-          <div class="project-image mb-4">
-            <ImageCarousel 
-              images={project.images}
-              projectName={project.name}
-              projectId={project.id}
-            />
-          </div>
-          <h3 class={`text-xl font-bold text-${colorMap[project.color]} mb-2`}>
-            {project.title}
-          </h3>
-          <p class="text-pixel-white mb-4">
-            {project.description}
-          </p>
-          <div class="flex flex-wrap gap-2 mb-4">
-            {project.technologies.map((tech) => (
-              <span class="tech-tag">{tech}</span>
-            ))}
-          </div>
-          <div class="flex gap-3">
-            {project.demoUrl && (
-              <button
-                class="pixel-button text-sm"
-                onclick={`window.open('${project.demoUrl}', '_blank')`}
-              >
-                VER DEMO
-              </button>
-            )}
 
-            {project.codeUrl && (
-              <button
-                class="pixel-button text-sm"
-                onclick={`window.open('${project.codeUrl}', '_blank')`}
-              >
-                CÓDIGO
-              </button>
-            )}
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        projects.map((project, index) => (
+          <div
+            class="project-card pixel-box p-6 fade-in"
+            data-delay={index * 200}
+          >
+            <div class="project-image mb-4">
+              <ImageCarousel
+                images={project.images}
+                projectName={project.name}
+                projectId={project.id}
+              />
+            </div>
+            <h3
+              class={`text-xl font-bold text-${colorMap[project.color as keyof typeof colorMap]} mb-2`}
+            >
+              {project.title}
+            </h3>
+            <p class="text-pixel-white mb-4">
+              {project.description[lang === "es" ? "es" : "en"]}
+            </p>
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.technologies.map((tech) => (
+                <span class="tech-tag">{tech}</span>
+              ))}
+            </div>
+            <div class="flex gap-3">
+              {project.demoUrl && (
+                <button
+                  class="pixel-button text-sm"
+                  onclick={`window.open('${project.demoUrl}', '_blank')`}
+                >
+                  {t("projects.viewDemo")}
+                </button>
+              )}
+
+              {project.codeUrl && (
+                <button
+                  class="pixel-button text-sm"
+                  onclick={`window.open('${project.codeUrl}', '_blank')`}
+                >
+                  {t("projects.viewCode")}
+                </button>
+              )}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      }
     </div>
   </div>
 </section>
@@ -64,9 +83,9 @@ import { projects, colorMap } from '../data/projects.js';
     position: relative;
     overflow: hidden;
   }
-  
+
   .project-card::before {
-    content: '';
+    content: "";
     position: absolute;
     top: -2px;
     left: -2px;
@@ -77,29 +96,29 @@ import { projects, colorMap } from '../data/projects.js';
     opacity: 0;
     transition: opacity 0.3s ease;
   }
-  
+
   .project-card:hover::before {
     opacity: 1;
   }
-  
+
   .project-card:hover {
     transform: translateY(-10px) scale(1.02);
-    box-shadow: 
+    box-shadow:
       0 20px 40px rgba(0, 255, 255, 0.3),
       0 0 50px rgba(255, 0, 255, 0.2);
   }
-  
+
   .project-image {
     transition: all 0.3s ease;
     image-rendering: auto;
     height: 320px;
     margin-bottom: 1rem;
   }
-  
+
   .project-card:hover .project-image {
     transform: none;
   }
-  
+
   .tech-tag {
     background: rgba(0, 255, 255, 0.2);
     color: #00ffff;

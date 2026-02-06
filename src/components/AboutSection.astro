@@ -1,40 +1,49 @@
 ---
+import { useTranslations } from "../i18n/utils";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
 ---
 
 <section id="about" class="min-h-screen py-20 px-4 overflow-x-hidden">
   <div class="max-w-6xl mx-auto">
-    <h2 class="text-4xl md:text-6xl font-black text-center mb-16 glow-text slide-in-left">
+    <h2
+      class="text-4xl md:text-6xl font-black text-center mb-16 glow-text slide-in-left"
+    >
       <span class="text-pixel-purple">[</span>
-      <span class="text-pixel-blue">SOBRE_MÍ</span>
+      <span class="text-pixel-blue">{t("about.title")}</span>
       <span class="text-pixel-purple">]</span>
     </h2>
-    
-    <div class="grid md:grid-cols-2 gap-12 items-center">
-    <div class="slide-in-left">
-      <div class="pixel-box p-8">
-        <h3 class="text-2xl font-bold mb-4 text-pixel-green">
-          > PERFIL_PERSONAL
-        </h3>
-        <p class="text-lg mb-6 leading-relaxed text-pixel-white">
-          Soy un desarrollador enfocado en el diseño y construcción de aplicaciones web y móviles, con una visión clara: transformar ideas en soluciones digitales útiles, escalables y modernas. Me apasiona crear sistemas que no solo funcionen de manera eficiente, sino que también ofrezcan una experiencia fluida e intuitiva para los usuarios.
-        </p>
-        <p class="text-lg mb-6 leading-relaxed text-pixel-white">
-          Mi enfoque se basa en aplicar arquitecturas sólidas como Hexagonal, Vertical Slice Architecture (VSA) y MVC/MVT, siempre respetando principios de código limpio y buenas prácticas de desarrollo. Esto me permite construir soluciones robustas, mantenibles y adaptables al crecimiento de los proyectos.
-        </p>
-        <p class="text-lg mb-6 leading-relaxed text-pixel-white">
-          Además, integro inteligencia artificial de manera estratégica en mi flujo de trabajo para optimizar procesos, reducir tiempos y costos, y maximizar la eficiencia en el desarrollo de soluciones. Aunque no soy un experto en DevOps, tengo experiencia aplicando conceptos básicos para mejorar despliegues y entornos de prueba.
-        </p>
-        <p class="text-lg leading-relaxed text-pixel-white">
-          Cuando no estoy programando, me dedico a potenciar mi conocimiento y explorar nuevas tecnologías. Creo firmemente en el poder de la simplicidad y la creatividad para generar productos que realmente marquen la diferencia para los usuarios.
-        </p>
-      </div>
-    </div>
 
-      
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="slide-in-left">
+        <div class="pixel-box p-8">
+          <h3 class="text-2xl font-bold mb-4 text-pixel-green">
+            {t("about.profile")}
+          </h3>
+          <p class="text-lg mb-6 leading-relaxed text-pixel-white">
+            {t("about.p1")}
+          </p>
+          <p class="text-lg mb-6 leading-relaxed text-pixel-white">
+            {t("about.p2")}
+          </p>
+          <p class="text-lg mb-6 leading-relaxed text-pixel-white">
+            {t("about.p3")}
+          </p>
+          <p class="text-lg leading-relaxed text-pixel-white">
+            {t("about.p4")}
+          </p>
+        </div>
+      </div>
+
       <div class="slide-in-right">
         <div class="pixel-box p-8">
           <h3 class="text-2xl font-bold mb-6 text-pixel-yellow">
-            > HABILIDADES
+            {t("about.skills")}
           </h3>
           <div class="space-y-4">
             <div class="skill-item">
@@ -137,20 +146,20 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Stats pixeladas -->
     <div class="grid grid-cols-2 md:grid-cols-3 gap-6 mt-16 fade-in">
       <div class="pixel-box p-6 text-center">
         <div class="text-3xl font-black text-pixel-blue mb-2">6+</div>
-        <div class="text-pixel-white">PROYECTOS</div>
+        <div class="text-pixel-white">{t("about.projects")}</div>
       </div>
-        <div class="pixel-box p-6 text-center">
+      <div class="pixel-box p-6 text-center">
         <div class="text-3xl font-black text-pixel-purple mb-2">100%</div>
-        <div class="text-pixel-white">FUNCIONALES</div>
+        <div class="text-pixel-white">{t("about.functional")}</div>
       </div>
       <div class="pixel-box p-6 text-center">
         <div class="text-3xl font-black text-pixel-green mb-2">4+</div>
-        <div class="text-pixel-white">AÑOS EXP</div>
+        <div class="text-pixel-white">{t("about.exp")}</div>
       </div>
     </div>
   </div>
@@ -160,14 +169,14 @@
   .skill-item {
     margin-bottom: 16px;
   }
-  
+
   .skill-name {
     color: #ffffff;
     font-weight: bold;
     margin-bottom: 8px;
     font-size: 14px;
   }
-  
+
   .skill-bar {
     height: 12px;
     background: rgba(26, 26, 26, 0.8);
@@ -175,7 +184,7 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .skill-progress {
     height: 100%;
     background: linear-gradient(90deg, #00ffff, #ff00ff);
@@ -183,9 +192,9 @@
     position: relative;
     transition: width 2s ease-out;
   }
-  
+
   .skill-progress::after {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -201,43 +210,50 @@
     animation: pixelMove 0.6s linear infinite;
     pointer-events: none;
   }
-  
+
   @keyframes pixelMove {
-    0% { transform: translateX(-4px); }
-    100% { transform: translateX(0px); }
+    0% {
+      transform: translateX(-4px);
+    }
+    100% {
+      transform: translateX(0px);
+    }
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function () {
     function animateSkills() {
-      const skillItems = document.querySelectorAll('.skill-progress');
-      
+      const skillItems = document.querySelectorAll(".skill-progress");
+
       skillItems.forEach((progress, index) => {
-        if (!progress.hasAttribute('data-animated')) {
-          const targetWidth = progress.getAttribute('data-width');
-          
+        if (!progress.hasAttribute("data-animated")) {
+          const targetWidth = progress.getAttribute("data-width");
+
           setTimeout(() => {
-            progress.style.width = targetWidth + '%';
-            progress.setAttribute('data-animated', 'true');
+            progress.style.width = targetWidth + "%";
+            progress.setAttribute("data-animated", "true");
           }, index * 200);
         }
       });
     }
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          animateSkills();
-        }
-      });
-    }, {
-      threshold: 0.2,
-      rootMargin: '0px 0px -50px 0px'
-    });
-    
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            animateSkills();
+          }
+        });
+      },
+      {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px",
+      },
+    );
+
     // Observar la sección completa de "about"
-    const aboutSection = document.getElementById('about');
+    const aboutSection = document.getElementById("about");
     if (aboutSection) {
       observer.observe(aboutSection);
     }

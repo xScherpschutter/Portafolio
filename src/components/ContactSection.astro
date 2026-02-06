@@ -1,127 +1,177 @@
 ---
+import { useTranslations } from "../i18n/utils";
+
+interface Props {
+  lang: string;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang as any);
 ---
 
 <section id="contact" class="min-h-screen py-20 px-4 overflow-x-hidden">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-4xl md:text-6xl font-black text-center mb-16 glow-text fade-in">
+    <h2
+      class="text-4xl md:text-6xl font-black text-center mb-16 glow-text fade-in"
+    >
       <span class="text-pixel-red">&#60;</span>
-      <span class="text-pixel-blue">CONTACTO</span>
+      <span class="text-pixel-blue">{t("contact.title")}</span>
       <span class="text-pixel-red">&#47;&#62;</span>
     </h2>
-    
+
     <div class="grid md:grid-cols-2 gap-12">
       <!-- Formulario -->
       <div class="slide-in-left">
         <div class="pixel-box p-8">
           <h3 class="text-2xl font-bold mb-6 text-pixel-green">
-            > CORREO
+            {t("contact.formTitle")}
           </h3>
-          <form class="space-y-6" id="contact-form">
+          <form
+            class="space-y-6"
+            id="contact-form"
+            data-opening={t("contact.opening")}
+            data-opened={t("contact.opened")}
+            data-greeting={t("contact.greeting")}
+            data-reason={t("contact.reason")}
+            data-message={t("contact.messageLabel")}
+            data-regards={t("contact.regards")}
+            data-subject-default={t("contact.subjectDefault")}
+            data-contact-email={t("contact.contactEmail")}
+          >
             <div>
-              <label class="block text-pixel-white mb-2 font-bold">NOMBRE:</label>
-              <input 
-                type="text" 
+              <label class="block text-pixel-white mb-2 font-bold"
+                >{t("contact.name")}</label
+              >
+              <input
+                type="text"
                 name="name"
                 required
                 class="w-full bg-pixel-black border-2 border-pixel-blue text-pixel-white p-3 focus:border-pixel-purple focus:outline-none transition-colors"
-                placeholder="Tu nombre aquí..."
-              >
+                placeholder={t("contact.placeholderName")}
+              />
             </div>
-            
+
             <div>
-              <label class="block text-pixel-white mb-2 font-bold">EMAIL:</label>
-              <input 
-                type="email" 
+              <label class="block text-pixel-white mb-2 font-bold"
+                >{t("contact.email")}</label
+              >
+              <input
+                type="email"
                 name="email"
                 required
                 class="w-full bg-pixel-black border-2 border-pixel-blue text-pixel-white p-3 focus:border-pixel-purple focus:outline-none transition-colors"
                 placeholder="email@ejemplo.com"
-              >
+              />
             </div>
-            
+
             <div>
-              <label class="block text-pixel-white mb-2 font-bold">ASUNTO:</label>
-              <select 
+              <label class="block text-pixel-white mb-2 font-bold"
+                >{t("contact.subject")}</label
+              >
+              <select
                 name="subject"
                 class="w-full bg-pixel-black border-2 border-pixel-blue text-pixel-white p-3 focus:border-pixel-purple focus:outline-none transition-colors"
               >
-                <option value="proyecto">Nuevo Proyecto</option>
-                <option value="colaboracion">Colaboración</option>
-                <option value="freelance">Trabajo Freelance</option>
-                <option value="consulta">Consulta General</option>
+                <option value="proyecto">{t("contact.optionProject")}</option>
+                <option value="colaboracion">{t("contact.optionCollab")}</option
+                >
+                <option value="freelance">{t("contact.optionFreelance")}</option
+                >
+                <option value="consulta">{t("contact.optionOther")}</option>
               </select>
             </div>
-            
+
             <div>
-              <label class="block text-pixel-white mb-2 font-bold">MENSAJE:</label>
-              <textarea 
+              <label class="block text-pixel-white mb-2 font-bold"
+                >{t("contact.message")}</label
+              >
+              <textarea
                 name="message"
                 rows="5"
                 required
                 class="w-full bg-pixel-black border-2 border-pixel-blue text-pixel-white p-3 focus:border-pixel-purple focus:outline-none transition-colors resize-none"
-                placeholder="Cuéntame sobre tu proyecto..."
-              ></textarea>
+                placeholder={t("contact.placeholderMessage")}></textarea>
             </div>
-            
+
             <button type="submit" class="pixel-button w-full">
-              ENVIAR_MENSAJE()
+              {t("contact.send")}
             </button>
           </form>
         </div>
       </div>
-      
+
       <!-- Información de contacto -->
       <div class="slide-in-right">
         <div class="pixel-box p-8 mb-8">
           <h3 class="text-2xl font-bold mb-6 text-pixel-yellow">
-            > CONTACTO
+            {t("contact.infoTitle")}
           </h3>
-          
+
           <div class="space-y-6">
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-pixel-blue flex items-center justify-center border-2 border-pixel-white">
+              <div
+                class="w-12 h-12 bg-pixel-blue flex items-center justify-center border-2 border-pixel-white"
+              >
                 <span class="text-pixel-black font-black">@</span>
               </div>
               <div>
-                <div class="text-pixel-white font-bold">EMAIL</div>
-                <div class="text-pixel-blue">willianmaciasalmeida41@gmail.com</div>
+                <div class="text-pixel-white font-bold">
+                  {t("contact.email")}
+                </div>
+                <div class="text-pixel-blue">
+                  willianmaciasalmeida41@gmail.com
+                </div>
               </div>
             </div>
-            
+
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-pixel-purple flex items-center justify-center border-2 border-pixel-white">
+              <div
+                class="w-12 h-12 bg-pixel-purple flex items-center justify-center border-2 border-pixel-white"
+              >
                 <span class="text-pixel-black font-black">☎</span>
               </div>
               <div>
-                <div class="text-pixel-white font-bold">TELÉFONO</div>
+                <div class="text-pixel-white font-bold">
+                  {t("contact.phone")}
+                </div>
                 <div class="text-pixel-purple">+593 99 720 5989</div>
               </div>
             </div>
-            
+
             <div class="flex items-center gap-4">
-              <div class="w-12 h-12 bg-pixel-green flex items-center justify-center border-2 border-pixel-white">
+              <div
+                class="w-12 h-12 bg-pixel-green flex items-center justify-center border-2 border-pixel-white"
+              >
                 <span class="text-pixel-black font-black">⚡</span>
               </div>
               <div>
-                <div class="text-pixel-white font-bold">DISPONIBILIDAD</div>
+                <div class="text-pixel-white font-bold">
+                  {t("contact.availability")}
+                </div>
                 <div class="text-pixel-green">24/7 ONLINE</div>
               </div>
             </div>
           </div>
         </div>
-        
+
         <!-- Redes sociales -->
         <div class="pixel-box p-8">
           <h3 class="text-2xl font-bold mb-6 text-pixel-red">
-            > REDES_SOCIALES[]
+            {t("contact.social")}
           </h3>
-          
+
           <div class="grid grid-cols-2 gap-3">
-            <a href="https://github.com/xScherpschutter" class="social-link bg-gradient-to-r from-pixel-blue to-pixel-purple">
+            <a
+              href="https://github.com/xScherpschutter"
+              class="social-link bg-gradient-to-r from-pixel-blue to-pixel-purple"
+            >
               <span class="text-2xl">⚡</span>
               <span>GITHUB</span>
             </a>
-            <a href="https://discord.com/users/410229031263404034" class="social-link bg-gradient-to-r from-pixel-yellow to-pixel-blue">
+            <a
+              href="https://discord.com/users/410229031263404034"
+              class="social-link bg-gradient-to-r from-pixel-yellow to-pixel-blue"
+            >
               <span class="text-2xl">📱</span>
               <span>DISCORD</span>
             </a>
@@ -144,68 +194,79 @@
     border: 2px solid #fff;
     transition: all 0.3s ease;
   }
-  
+
   .social-link:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
   }
-  
-  input, textarea, select {
-    font-family: 'Orbitron', monospace;
+
+  input,
+  textarea,
+  select {
+    font-family: "Orbitron", monospace;
   }
-  
-  input:focus, textarea:focus, select:focus {
+
+  input:focus,
+  textarea:focus,
+  select:focus {
     box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
   }
 </style>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('contact-form');
-    
-    form?.addEventListener('submit', function(e) {
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+
+    form?.addEventListener("submit", function (e) {
       e.preventDefault();
-      
+
       const formData = new FormData(form);
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const subject = formData.get('subject');
-      const message = formData.get('message');
-      
-      const subjectMap = {
-        'proyecto': 'Nuevo Proyecto',
-        'colaboracion': 'Propuesta de Colaboración',
-        'freelance': 'Trabajo Freelance',
-        'consulta': 'Consulta General'
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const subject = formData.get("subject") as string;
+      const message = formData.get("message") as string;
+
+      // Get translations from data attributes
+      const t = form.dataset;
+
+      const subjectMap: Record<string, string> = {
+        proyecto: t.optionProject || "Nuevo Proyecto",
+        colaboracion: t.optionCollab || "Propuesta de Colaboración",
+        freelance: t.optionFreelance || "Trabajo Freelance",
+        consulta: t.optionOther || "Consulta General",
       };
-      
-      const subjectText = subjectMap[subject] || 'Consulta';
-      
-      const emailBody = `Hola,\n\n` +
+
+      const subjectText = subjectMap[subject] || t.subjectDefault || "Consulta";
+
+      const emailBody =
+        `${t.greeting || "Hola"},\n\n` +
         `Mi nombre es ${name} y me pongo en contacto contigo desde tu portafolio web.\n\n` +
-        `Motivo: ${subjectText}\n\n` +
-        `Mensaje:\n${message}\n\n` +
-        `Saludos,\n${name}\n` +
-        `Email de contacto: ${email}`;
-      
+        `${t.reason || "Motivo"}: ${subjectText}\n\n` +
+        `${t.message || "Mensaje"}:\n${message}\n\n` +
+        `${t.regards || "Saludos"},\n${name}\n` +
+        `${t.contactEmail || "Email de contacto"}: ${email}`;
+
       const mailtoLink = `mailto:willianmaciasalmeida41@gmail.com?subject=${encodeURIComponent(`[Portafolio] ${subjectText} - ${name}`)}&body=${encodeURIComponent(emailBody)}`;
-      
-      const button = form.querySelector('button[type="submit"]');
-      const originalText = button!.textContent;
-      
-      button!.textContent = 'ABRIENDO_CORREO...';
-      button!.disabled = true;
+
+      const button = form.querySelector(
+        'button[type="submit"]',
+      ) as HTMLButtonElement;
+      const originalText = button.textContent;
+
+      button.textContent = t.opening || "ABRIENDO_CORREO...";
+      button.disabled = true;
 
       window.location.href = mailtoLink;
 
       setTimeout(() => {
-        button!.textContent = 'CORREO_ABIERTO ✓';
-        button!.style.background = 'linear-gradient(135deg, #00ff00 0%, #00ffff 100%)';
-        
+        button.textContent = t.opened || "CORREO_ABIERTO ✓";
+        button.style.background =
+          "linear-gradient(135deg, #00ff00 0%, #00ffff 100%)";
+
         setTimeout(() => {
-          button!.textContent = originalText;
-          button!.disabled = false;
-          button!.style.background = '';
+          button.textContent = originalText;
+          button.disabled = false;
+          button.style.background = "";
         }, 2000);
       }, 500);
     });

@@ -4,7 +4,10 @@ export const projects = [
     id: 1,
     name: "GlassTech",
     title: "GLASSTECH",
-    description: "Página web que permite a los usuarios identificar la morfología de su rostro mediante una imagen, utilizando una red neuronal convolucional para un análisis preciso.",
+    description: {
+      es: "Página web que permite a los usuarios identificar la morfología de su rostro mediante una imagen, utilizando una red neuronal convolucional para un análisis preciso.",
+      en: "Web page that allows users to identify their face morphology through an image, using a convolutional neural network for accurate analysis."
+    },
     images: [
       "/GlassTech/GlassTech.webp"
     ],
@@ -17,7 +20,10 @@ export const projects = [
     id: 2,
     name: "Tia-Tracker",
     title: "TIA_TRACKER",
-    description: "Aplicativo web diseñado para almacenes TIA que monitorea en tiempo real las variaciones de precios de materia prima, facilitando la toma de decisiones basada en datos.",
+    description: {
+      es: "Aplicativo web diseñado para almacenes TIA que monitorea en tiempo real las variaciones de precios de materia prima, facilitando la toma de decisiones basada en datos.",
+      en: "Web application designed for TIA warehouses that monitors raw material price variations in real-time, facilitating data-driven decision making."
+    },
     images: [
       "/Tia-Tracker/Tia1.webp",
       "/Tia-Tracker/Tia2.webp",
@@ -36,7 +42,10 @@ export const projects = [
     id: 3,
     name: "Crearcos Mobile App",
     title: "CREARCOS_APP",
-    description: "Aplicativo móvil personalizado para la empresa Crearcos, que permite a los usuarios adquirir productos y acceder a cursos previamente comprados de manera sencilla.",
+    description: {
+      es: "Aplicativo móvil personalizado para la empresa Crearcos, que permite a los usuarios adquirir productos y acceder a cursos previamente comprados de manera sencilla.",
+      en: "Custom mobile application for Crearcos company, allowing users to purchase products and easily access previously bought courses."
+    },
     images: [
       "/Crearcos/Crearcos.webp",
       "/Crearcos/Crearcos1.webp",
@@ -56,7 +65,10 @@ export const projects = [
     id: 4,
     name: "ActioLift",
     title: "ACTIO_LIFT",
-    description: "Aplicación de escritorio que funciona como punto de venta para gimnasios, gestionando recursos, membresías y ventas de manera eficiente.",
+    description: {
+      es: "Aplicación de escritorio que funciona como punto de venta para gimnasios, gestionando recursos, membresías y ventas de manera eficiente.",
+      en: "Desktop application operating as a point of sale for gyms, efficiently managing resources, memberships, and sales."
+    },
     images: [
       "/ActioLift/ActioLift1.webp",
       "/ActioLift/ActioLift2.webp",
@@ -81,7 +93,10 @@ export const projects = [
     id: 5,
     name: "RiskEval",
     title: "RISK_EVAL",
-    description: "Aplicación web que por debajo utiliza un agente de IA, y que este a su vez tiene integrado un motor de lógica difusa para evaluar riesgos en proyectos ágiles, apoyando a Scrum Masters y líderes de proyecto con métricas y alertas tempranas para una mejor gestión. Tiene integración con Confluence para agilizar el proceso de análisis.",
+    description: {
+      es: "Aplicación web que por debajo utiliza un agente de IA, y que este a su vez tiene integrado un motor de lógica difusa para evaluar riesgos en proyectos ágiles, apoyando a Scrum Masters y líderes de proyecto con métricas y alertas tempranas para una mejor gestión. Tiene integración con Confluence para agilizar el proceso de análisis.",
+      en: "Web application powered by an AI agent integrated with a fuzzy logic engine to evaluate risks in agile projects, supporting Scrum Masters and project leaders with metrics and early alerts for better management. Features Confluence integration to streamline the analysis process."
+    },
     images: [
       "/RiskEval/Risk1.webp",
       "/RiskEval/Risk2.webp",
@@ -109,7 +124,10 @@ export const projects = [
     id: 6,
     name: "AgroVentas",
     title: "AGROVENTAS",
-    description: "Aplicativo web exclusivo para propietarios y gestores de agroservicios, que permite gestionar y vender productos. De mis primeros proyectos como programador",
+    description: {
+      es: "Aplicativo web exclusivo para propietarios y gestores de agroservicios, que permite gestionar y vender productos. De mis primeros proyectos como programador",
+      en: "Web application exclusive for agro-service owners and managers, allowing product management and sales. One of my first projects as a developer."
+    },
     images: [
       "/Agroservice/Agro1.webp",
       "/Agroservice/Agro2.webp",
@@ -126,7 +144,10 @@ export const projects = [
     id: 7,
     name: "Deeztracker Desktop",
     title: "DEEZTRACKER_DESKTOP",
-    description: "Aplicación de escritorio multiplataforma que se integra con el servicio de streaming de Deezer. Construida con Python y Flet, Deeztracker ofrece una experiencia nativa para escuchar y gestionar tu biblioteca de música de Deezer, con características como integración de música local, listas de reproducción personalizadas y controles multimedia avanzados.",
+    description: {
+      es: "Aplicación de escritorio multiplataforma que se integra con el servicio de streaming de Deezer. Construida con Python y Flet, Deeztracker ofrece una experiencia nativa para escuchar y gestionar tu biblioteca de música de Deezer, con características como integración de música local, listas de reproducción personalizadas y controles multimedia avanzados.",
+      en: "Cross-platform desktop application integrating with Deezer streaming service. Built with Python and Flet, Deeztracker offers a native experience for listening and managing your Deezer music library, with features like local music integration, custom playlists, and advanced media controls."
+    },
     images: [
       "/Deeztracker-Desktop/Deez1.webp",
       "/Deeztracker-Desktop/Deez2.webp",
@@ -144,7 +165,10 @@ export const projects = [
     id: 8,
     name: "Deeztracker Mobile",
     title: "DEEZTRACKER_MOBILE",
-    description: "Deeztracker Mobile es una aplicación Android completa que permite a los usuarios descargar música de Deezer para reproducirla sin conexión. Construida con prácticas modernas de desarrollo Android usando Kotlin y Jetpack Compose, ofrece una interfaz elegante e intuitiva con gestión completa de biblioteca de música offline.",
+    description: {
+      es: "Deeztracker Mobile es una aplicación Android completa que permite a los usuarios descargar música de Deezer para reproducirla sin conexión. Construida con prácticas modernas de desarrollo Android usando Kotlin y Jetpack Compose, ofrece una interfaz elegante e intuitiva con gestión completa de biblioteca de música offline.",
+      en: "Deeztracker Mobile is a complete Android application allowing users to download Deezer music for offline playback. Built with modern Android development practices using Kotlin and Jetpack Compose, it offers a sleek, intuitive interface with full offline music library management."
+    },
     images: [
       "/Deeztracker-Mobile/AlbumSearch.webp",
       "/Deeztracker-Mobile/ArtistSearch.webp",
@@ -167,7 +191,10 @@ export const projects = [
     id: 9,
     name: "ActioWatch",
     title: "ACTIOWATCH",
-    description: "ActioWatch es una herramienta de monitoreo del sistema y gestión de procesos de alto rendimiento y multiplataforma, construida con Rust y Tauri. Diseñada para usuarios avanzados y desarrolladores, proporciona información en tiempo real sobre los recursos del sistema y un control granular sobre los procesos en ejecución, todo envuelto en una interfaz moderna y estética.",
+    description: {
+      es: "ActioWatch es una herramienta de monitoreo del sistema y gestión de procesos de alto rendimiento y multiplataforma, construida con Rust y Tauri. Diseñada para usuarios avanzados y desarrolladores, proporciona información en tiempo real sobre los recursos del sistema y un control granular sobre los procesos en ejecución, todo envuelto en una interfaz moderna y estética.",
+      en: "ActioWatch is a high-performance, cross-platform system monitoring and process management tool built with Rust and Tauri. Designed for power users and developers, it provides real-time insights into system resources and granular control over running processes, wrapped in a modern, aesthetic interface."
+    },
     images: [
       "/ActioWatch/screen1.webp",
       "/ActioWatch/screen2.webp",
